@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABC Bank - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -230px;
+      width: 230px;
+      height: 100%;
+      background: #212529;
+      color: white;
+      padding-top: 70px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #adb5bd;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .sidebar a:hover {
+      background: #00c4ff;
+      color: #212529;
+      font-weight: bold;
+    }
+
+    /* Profile box inside sidebar */
+    .profile-box {
+      text-align: center;
+      padding: 14px 12px;
+      margin: 0 10px 8px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .profile-box img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+      border: 2px solid #00c4ff;
+    }
+    .profile-box h6 {
+      margin: 0;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .profile-box small {
+      color: #adb5bd;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .profile-box .btn-login {
+      display: block;
+      width: 100%;
+      background: #00c4ff;
+      color: #000;
+      border: none;
+      font-weight: 700;
+      padding: 7px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .profile-box .btn-login:hover {
+      background: #009ecb;
+      color: #000;
+      text-decoration: none;
+    }
+
+    /* Toggle button */
+    #sidebarToggle {
+      display: none;
+    }
+    .toggle-label {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 1.5rem;
+      background: #00c4ff;
+      color: #212529;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1100;
+      transition: background 0.3s ease;
+    }
+    .toggle-label:hover {
+      background: #009ecb;
+    }
+
+    /* Show sidebar when checked */
+    #sidebarToggle:checked ~ .sidebar {
+      left: 0;
+    }
+    #sidebarToggle:checked ~ .content {
+      margin-left: 230px;
+    }
+
+    /* Main content area */
+    .content {
+      transition: margin-left 0.3s ease;
+    }
+
+    /* Hero section */
+    .hero {
+      background: url('https://cdn.pixabay.com/photo/2016/09/05/18/49/plastic-card-1647376_1280.jpg') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      color: white;
+      padding: 150px 20px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    /* Feature cards */
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: #212529;
+      color: #adb5bd;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+    footer a {
+      color: #00c4ff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* small screens adjustments */
+    @media (max-width: 768px) {
+      .hero { padding: 120px 16px; }
+      .profile-box img { width: 48px; height: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar toggle (checkbox + label as button) -->
+  <input type="checkbox" id="sidebarToggle" aria-hidden="true">
+  <label for="sidebarToggle" class="toggle-label" aria-hidden="true">☰</label>
+
+  <!-- Sidebar -->
+  <div class="sidebar" role="navigation" aria-label="Main sidebar">
+    <!-- Added profile + login -->
+    <div class="profile-box" aria-hidden="false">
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Guest Avatar">
+      <h6>Guest User</h6>
+      <small>ID: #GUEST001</small>
+      <a href="Login.html" class="btn-login" title="Login">🔐 Login</a>
+    </div>
+
+    <h4 class="text-center text-info mb-3">🏦 ABC Bank</h4>
+    <a href="index.html">🏠 Home</a>
+    <a href="Dashboard.html">📊 Dashboard</a>
+    <a href="PaymentForm.html">💳 Payments</a>
+    <a href="Transactions.html">📄 Transactions</a>
+    <a href="MyCards.html">💼 My Cards</a>
+    <a href="Accounts.html">🏦 Accounts</a>
+    <a href="Loans.html">💰 Loans</a>
+    <a href="Investments.html">📈 Investments</a>
+    <a href="Statements.html">📑 Statements</a>
+    <a href="Settings.html">⚙️ Settings</a>
+    <hr class="text-secondary">
+    <a href="FAQ.html">❓ FAQ</a>
+    <a href="Help.html">🆘 Help</a>
+    <a href="Contact.html">📞 Contact</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to <span class="text-info">ABC Bank</span></h1>
+        <p>Your trusted partner in secure digital banking.</p>
+        <a href="Dashboard.html" class="btn btn-lg btn-info fw-bold mt-4">Go to Dashboard</a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container my-5">
+      <div class="row text-center g-4">
+        <div class="col-md-3">
+          <a href="Payment Form.html" class="text-decoration-none text-dark">
+            <div class="card feature-card border-0 shadow h-100">
+              <div class="card-body">
+                <div class="fs-1 mb-3">💳</div>
+                <h5 class="card-title text-info fw-bold">Quick Payments</h5>
+                <p class="card-text">Pay bills and transfer money instantly with secure transactions.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="Dashboard.html" class="text-decoration-none text-dark">
+            <div class="card feature-card border-0 shadow h-100">
+              <div class="card-body">
+                <div class="fs-1 mb-3">📊</div>
+                <h5 class="card-title text-info fw-bold">Dashboard</h5>
+                <p class="card-text">View account balance, spending insights, and track your finances.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="MyCards.html" class="text-decoration-none text-dark">
+            <div class="card feature-card border-0 shadow h-100">
+              <div class="card-body">
+                <div class="fs-1 mb-3">💼</div>
+                <h5 class="card-title text-info fw-bold">Manage Cards</h5>
+                <p class="card-text">Control debit/credit cards, set limits, and block lost cards.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="Statements.html" class="text-decoration-none text-dark">
+            <div class="card feature-card border-0 shadow h-100">
+              <div class="card-body">
+                <div class="fs-1 mb-3">📑</div>
+                <h5 class="card-title text-info fw-bold">Statements</h5>
+                <p class="card-text">Download and view monthly account and card statements anytime.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container my-5">
+      <h2 class="text-center fw-bold mb-4">🌟 Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow border-0">
+            <div class="card-body text-center">
+              <h5 class="text-info fw-bold">Loans & Mortgages</h5>
+              <p>Get flexible loans at competitive interest rates with quick approvals.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow border-0">
+            <div class="card-body text-center">
+              <h5 class="text-info fw-bold">Investments</h5>
+              <p>Grow your wealth with our range of mutual funds and fixed deposits.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow border-0">
+            <div class="card-body text-center">
+              <h5 class="text-info fw-bold">24/7 Support</h5>
+              <p>Our customer support team is available anytime to assist you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Assurance -->
+    <section class="container my-5 text-center">
+      <div class="p-4 bg-white shadow rounded">
+        <h2 class="fw-bold">🔒 Safe & Secure Banking</h2>
+        <p class="text-muted">Your data and transactions are protected with industry-leading encryption and multi-factor authentication.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="container">
+        <p class="mb-2">© 2025 ABC Bank. All Rights Reserved.</p>
+        <p>
+          <a href="FAQ.html">FAQ</a> | 
+          <a href="Help.html">Help</a> | 
+          <a href="Contact.html">Contact</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transactions - ABC Bank</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url("https://cdn.pixabay.com/photo/2016/09/05/18/49/plastic-card-1647376_1280.jpg") no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -230px;
+      width: 230px;
+      height: 100%;
+      background: #212529;
+      color: white;
+      padding-top: 70px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #adb5bd;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .sidebar a:hover {
+      background: #00c4ff;
+      color: #212529;
+      font-weight: bold;
+    }
+
+    /* Profile box */
+    .profile-box {
+      text-align: center;
+      padding: 14px 12px;
+      margin: 0 10px 8px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .profile-box img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+      border: 2px solid #00c4ff;
+    }
+    .profile-box h6 {
+      margin: 0;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .profile-box small {
+      color: #adb5bd;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .profile-box .btn-login {
+      display: block;
+      width: 100%;
+      background: #00c4ff;
+      color: #000;
+      border: none;
+      font-weight: 700;
+      padding: 7px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .profile-box .btn-login:hover {
+      background: #009ecb;
+      color: #000;
+    }
+
+    /* Toggle button */
+    #sidebarToggle { display: none; }
+    .toggle-label {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 1.5rem;
+      background: #00c4ff;
+      color: #212529;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1100;
+      transition: background 0.3s ease;
+    }
+    .toggle-label:hover { background: #009ecb; }
+    #sidebarToggle:checked ~ .sidebar { left: 0; }
+    #sidebarToggle:checked ~ .content { margin-left: 230px; }
+    .content { transition: margin-left 0.3s ease; }
+
+    /* Transactions Section */
+    .transactions-header {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+    .transactions-header h1 {
+      font-size: 32px;
+      color: #222;
+      margin-bottom: 10px;
+    }
+    .transactions-header p {
+      font-size: 18px;
+      color: #444;
+    }
+
+    .transactions-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .transactions-tools input {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+      width: 200px;
+    }
+    .transactions-tools select {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+    }
+
+    .transactions-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+    .transactions-table th,
+    .transactions-table td {
+      padding: 12px 15px;
+      text-align: center;
+    }
+    .transactions-table th {
+      background: #00c4ff;
+      color: white;
+    }
+    .transactions-table tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+    .transactions-table tr:hover {
+      background: #d7f0ff;
+    }
+
+    /* Footer */
+    footer {
+      background: #212529;
+      color: #adb5bd;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #00c4ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    /* Pagination */
+    .pagination {
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar toggle -->
+  <input type="checkbox" id="sidebarToggle">
+  <label for="sidebarToggle" class="toggle-label">☰</label>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="profile-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Guest Avatar">
+      <h6>Guest User</h6>
+      <small>ID: #GUEST001</small>
+      <a href="login.html" class="btn-login">🔐 Login</a>
+    </div>
+
+    <h4 class="text-center text-info mb-3">🏦 ABC Bank</h4>
+    <a href="index.html">🏠 Home</a>
+    <a href="Dashboard.html">📊 Dashboard</a>
+    <a href="Paymentform.html">💳 Payments</a>
+    <a href="Transactions.html">📄 Transactions</a>
+    <a href="MyCards.html">💼 My Cards</a>
+    <a href="Accounts.html">🏦 Accounts</a>
+    <a href="Loans.html">💰 Loans</a>
+    <a href="Investments.html">📈 Investments</a>
+    <a href="Statements.html">📑 Statements</a>
+    <a href="Settings.html">⚙️ Settings</a>
+    <hr class="text-secondary">
+    <a href="FAQ.html">❓ FAQ</a>
+    <a href="Help.html">🆘 Help</a>
+    <a href="Contact.html">📞 Contact</a>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <section class="container my-5">
+      <div class="transactions-header">
+        <h1>📄 Transactions</h1>
+        <p>View and filter your recent banking transactions.</p>
+      </div>
+
+      <div class="transactions-tools">
+        <input type="text" placeholder="🔎 Search by name...">
+        <select>
+          <option>All</option>
+          <option>Credit</option>
+          <option>Debit</option>
+        </select>
+      </div>
+
+      <!-- Transactions Table -->
+      <table class="transactions-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Details</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Page 1 -->
+          <tr>
+            <td>2025-08-29</td>
+            <td>Amazon Purchase</td>
+            <td>Debit</td>
+            <td>₹2,499</td>
+          </tr>
+          <tr>
+            <td>2025-08-28</td>
+            <td>Salary Credit</td>
+            <td>Credit</td>
+            <td>₹50,000</td>
+          </tr>
+          <tr>
+            <td>2025-08-25</td>
+            <td>Netflix Subscription</td>
+            <td>Debit</td>
+            <td>₹699</td>
+          </tr>
+          <tr>
+            <td>2025-08-23</td>
+            <td>Electricity Bill</td>
+            <td>Debit</td>
+            <td>₹1,200</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <nav>
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#page1">1</a></li>
+          <li class="page-item"><a class="page-link" href="#page2">2</a></li>
+          <li class="page-item"><a class="page-link" href="#page3">3</a></li>
+        </ul>
+      </nav>
+
+      <!-- Page 2 Table (hidden by anchor) -->
+      <table class="transactions-table mt-4" id="page2">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Details</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025-08-22</td>
+            <td>Groceries</td>
+            <td>Debit</td>
+            <td>₹3,200</td>
+          </tr>
+          <tr>
+            <td>2025-08-20</td>
+            <td>Bonus Credit</td>
+            <td>Credit</td>
+            <td>₹10,000</td>
+          </tr>
+          <tr>
+            <td>2025-08-19</td>
+            <td>Water Bill</td>
+            <td>Debit</td>
+            <td>₹450</td>
+          </tr>
+          <tr>
+            <td>2025-08-17</td>
+            <td>Gym Membership</td>
+            <td>Debit</td>
+            <td>₹1,500</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Page 3 Table -->
+      <table class="transactions-table mt-4" id="page3">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Details</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025-08-15</td>
+            <td>Movie Tickets</td>
+            <td>Debit</td>
+            <td>₹600</td>
+          </tr>
+          <tr>
+            <td>2025-08-13</td>
+            <td>Freelance Payment</td>
+            <td>Credit</td>
+            <td>₹7,500</td>
+          </tr>
+          <tr>
+            <td>2025-08-12</td>
+            <td>Internet Bill</td>
+            <td>Debit</td>
+            <td>₹800</td>
+          </tr>
+          <tr>
+            <td>2025-08-10</td>
+            <td>Restaurant</td>
+            <td>Debit</td>
+            <td>₹1,250</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="container">
+        <p class="mb-2">© 2025 ABC Bank. All Rights Reserved.</p>
+        <p>
+          <a href="FAQ.html">FAQ</a> | 
+          <a href="Help.html">Help</a> | 
+          <a href="Contact.html">Contact</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>

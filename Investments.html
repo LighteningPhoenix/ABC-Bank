@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investments - ABC Bank</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -230px;
+      width: 230px;
+      height: 100%;
+      background: #212529;
+      color: white;
+      padding-top: 70px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #adb5bd;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .sidebar a:hover {
+      background: #00c4ff;
+      color: #212529;
+      font-weight: bold;
+    }
+
+    .profile-box {
+      text-align: center;
+      padding: 14px 12px;
+      margin: 0 10px 8px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .profile-box img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+      border: 2px solid #00c4ff;
+    }
+    .profile-box h6 { margin: 0; color: #fff; font-size: 0.95rem; }
+    .profile-box small { color: #adb5bd; display: block; margin-bottom: 8px; }
+    .profile-box .btn-login {
+      display: block;
+      width: 100%;
+      background: #00c4ff;
+      color: #000;
+      border: none;
+      font-weight: 700;
+      padding: 7px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .profile-box .btn-login:hover { background: #009ecb; color: #000; }
+
+    /* Sidebar toggle */
+    #sidebarToggle { display: none; }
+    .toggle-label {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 1.5rem;
+      background: #00c4ff;
+      color: #212529;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1100;
+      transition: background 0.3s ease;
+    }
+    .toggle-label:hover { background: #009ecb; }
+    #sidebarToggle:checked ~ .sidebar { left: 0; }
+    #sidebarToggle:checked ~ .content { margin-left: 230px; }
+    .content { transition: margin-left 0.3s ease; }
+
+    /* Hero */
+    .hero {
+      background: url("https://cdn.pixabay.com/photo/2016/09/05/18/49/plastic-card-1647376_1280.jpg") no-repeat center center;
+      background-size: cover;
+      position: relative;
+      color: white;
+      padding: 150px 20px;
+      text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .hero-content { position: relative; z-index: 1; }
+
+    /* Cards */
+    .dashboard-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    .card-custom {
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      background: #212529;
+      color: #adb5bd;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+    footer a { color: #00c4ff; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar toggle -->
+  <input type="checkbox" id="sidebarToggle">
+  <label for="sidebarToggle" class="toggle-label">☰</label>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="profile-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Guest Avatar">
+      <h6>Guest User</h6>
+      <small>ID: #GUEST001</small>
+      <a href="Login.html" class="btn-login">🔐 Login</a>
+    </div>
+
+    <h4 class="text-center text-info mb-3">🏦 ABC Bank</h4>
+    <a href="index.html">🏠 Home</a>
+    <a href="Dashboard.html">📊 Dashboard</a>
+    <a href="PaymentForm.html">💳 Payments</a>
+    <a href="Transactions.html">📄 Transactions</a>
+    <a href="MyCards.html">💼 My Cards</a>
+    <a href="Accounts.html">🏦 Accounts</a>
+    <a href="Loans.html">💰 Loans</a>
+    <a href="Investments.html">📈 Investments</a>
+    <a href="Statements.html">📑 Statements</a>
+    <a href="Settings.html">⚙️ Settings</a>
+    <hr class="text-secondary">
+    <a href="FAQ.html">❓ FAQ</a>
+    <a href="Help.html">🆘 Help</a>
+    <a href="Contact.html">📞 Contact</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>📈 Investments</h1>
+        <p>Track and grow your wealth with ABC Bank</p>
+      </div>
+    </section>
+
+    <div class="dashboard-container">
+
+      <!-- Investment Portfolio -->
+      <h3 class="fw-bold mb-4">💼 Investment Portfolio</h3>
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="card card-custom p-4 text-center">
+            <h6 class="text-info fw-bold">Mutual Funds</h6>
+            <p class="display-6 fw-bold">₹ 1,20,000</p>
+            <small class="text-muted">Growth: +12%</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-custom p-4 text-center">
+            <h6 class="text-info fw-bold">Fixed Deposits</h6>
+            <p class="display-6 fw-bold">₹ 80,000</p>
+            <small class="text-muted">Maturity: 2026</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-custom p-4 text-center">
+            <h6 class="text-info fw-bold">Stocks</h6>
+            <p class="display-6 fw-bold">₹ 1,50,000</p>
+            <small class="text-muted">Growth: +8%</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <h3 class="fw-bold mb-4">⚡ Quick Investment Actions</h3>
+      <div class="d-flex flex-wrap gap-3 mb-5">
+        <a href="#" class="btn btn-info fw-bold">➕ Invest in Mutual Funds</a>
+        <a href="#" class="btn btn-outline-info fw-bold">💰 Open Fixed Deposit</a>
+        <a href="#" class="btn btn-outline-info fw-bold">📊 Buy Stocks</a>
+      </div>
+
+      <!-- Market Insights + Recent Investments -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-6">
+          <div class="card card-custom p-4">
+            <h5 class="text-info fw-bold">📊 Market Insights</h5>
+            <ul class="list-group list-group-flush mt-3">
+              <li class="list-group-item">NIFTY 50 up by 0.8%</li>
+              <li class="list-group-item">Sensex up by 1.1%</li>
+              <li class="list-group-item">Gold price increased by 2%</li>
+              <li class="list-group-item">USD/INR at 83.10</li>
+              <li class="list-group-item">Crude Oil prices down by 1.5%</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card card-custom p-4">
+            <h5 class="text-info fw-bold">📝 Recent Investments</h5>
+            <ul class="list-group list-group-flush mt-3">
+              <li class="list-group-item">₹20,000 in Axis Bluechip Fund</li>
+              <li class="list-group-item">₹50,000 Fixed Deposit opened</li>
+              <li class="list-group-item">₹30,000 invested in Infosys shares</li>
+              <li class="list-group-item">₹15,000 in SBI Equity Fund</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <h3 class="fw-bold mb-4">🔔 Investment Alerts</h3>
+      <div class="card card-custom p-4 mb-5">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Your FD of ₹50,000 matures on <strong>10th Sep 2026</strong>.</li>
+          <li class="list-group-item">Mutual Fund SIP of ₹5,000 deducted on <strong>1st Sep</strong>.</li>
+          <li class="list-group-item">Dividend of ₹2,500 credited from Infosys.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="container">
+        <p class="mb-2">© 2025 ABC Bank. All Rights Reserved.</p>
+        <p>
+          <a href="FAQ.html">FAQ</a> | 
+          <a href="Help.html">Help</a> | 
+          <a href="Contact.html">Contact</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
